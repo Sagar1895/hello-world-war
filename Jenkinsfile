@@ -1,5 +1,5 @@
 pipeline{
-      agent { label 'java' }
+      agent { label 'slave_one' }
       stages{
       stage('check out'){
                   steps{
@@ -22,11 +22,11 @@ pipeline{
                   }
             }
             stage('deploy'){
-                  agent { label 'java' }
+                  agent { label 'slave_two' }
                   steps{
                         sh "docker login -u sagar8123onkar -p Sagaronkar@96"
                         sh "docker pull sagar8123onkar/sagarnewrepo:1.0"
-                        sh "docker rm -f trail1"
+                        //sh "docker rm -f trail1"
                         sh "docker run -d -p 8085:8080 --name trail1 sagar8123onkar/sagarnewrepo:1.0"
                   }
             }
