@@ -12,6 +12,7 @@ pipeline{
       sh "pwd"
       sh "ls"
       sh "cd hello-world-war"
+      sh "chmod 777 /var/run/docker.sock"
       sh "docker build -t sagar8123onkar/sagarnewrepo:1.0 ."
       }
       }
